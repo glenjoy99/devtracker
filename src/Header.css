@@ -1,0 +1,39 @@
+.links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.link{
+    margin-right: 50px;
+    margin-top:5px;
+}
+
+.link:hover {
+    cursor: pointer;
+}
+
+.Header {
+    background-color: rgb(38, 40, 40);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    display:flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.logotext {
+    word-wrap: break-word;
+    margin-right: 100px;
+}
+
+.logotext h1 {
+    margin-bottom: 0;
+}
+
+.logo img {
+    width: 100px;
+    height: 100px;
+    margin-left: 25px;
+}
+

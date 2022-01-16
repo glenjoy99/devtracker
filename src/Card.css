@@ -1,0 +1,44 @@
+:root {
+    --imgurl: '';
+}
+
+.card {
+    border-radius: 25px;
+    height:200px;
+    width:250px;
+    min-width: 250px;
+    height: 200px;
+    margin-right: 50px;
+    margin-top: 25px;
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+    transition-timing-function: ease-in-out;
+    filter:drop-shadow(5px 5px 15px black)
+}
+
+img {
+    flex-shrink: 0;
+    min-width: 50%;
+    min-height: 50%;
+  }
+
+.card:hover{
+    transform:scale(1.01);
+    cursor: pointer;
+}
+
+.text-desc {
+    color:white;
+    padding-top: 100px;
+    padding-left: 30px;
+    text-align: left;
+    position:absolute;
+    display:inline-block;
+    transform: scale(0.9);
+    filter:drop-shadow(16px 16px 40px black)
+}

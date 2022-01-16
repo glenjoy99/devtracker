@@ -1,0 +1,26 @@
+.project_image {
+    height: 480px;
+    width: 720px;
+    margin-right: 40px;
+    filter:drop-shadow(5px 5px 25px black)
+}
+
+.project_image img {
+    flex-shrink: 0;
+    width: 100%;
+    height: auto;
+  }
+
+.project_info h3, p {
+    margin-bottom: 20px;
+}
+
+.project_info {
+    background-color: rgb(212, 218, 219);
+    padding: 20px;
+}
+
+.project_body {
+    display: flex;
+    margin: 50px;
+}

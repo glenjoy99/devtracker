@@ -1,0 +1,19 @@
+.row {
+    max-width: 1500px;
+    min-height: 230px;
+    overflow-wrap: normal;
+    overflow-y: scroll;
+    margin-bottom: 30px;
+    padding-bottom: 50px;
+    padding-left: 15px;
+    
+}
+
+.row h2 {
+    font-family: 'Readex Pro', sans-serif;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
