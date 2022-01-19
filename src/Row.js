@@ -37,18 +37,6 @@ function Row(props) {
         return <h2>Loading</h2>
     }
 
-    // {projects.map((project) => (
-    //     <Link to={"/project/" + createID(project.name)}>
-    //     <Card name={project.name} place={props.name} desc={project.desc} img={project.img}/>
-    //     </Link>
-    // ))}
-
-    // Object.keys(projects).map((key, index) => (
-    //     <Link to={"/projects/" + props.name + "/" + key}>
-    //     <Card name={projects[key].name} place={props.name} desc={projects[key].desc} img={projects[key].img}/>
-    //     </Link>
-    //      ))
-
     return (
         <div className='row'>
             <h2>{props.display}</h2>

@@ -37,3 +37,10 @@
     margin-left: 25px;
 }
 
+.logo_header {
+    display: flex;
+}
+
+.logo_header:hover {
+    cursor: pointer;
+}
