@@ -9,8 +9,8 @@ function Login() {
     const emailRef = useRef(null);
     const passRef = useRef(null);
 
-    const [user, setUser] = useState(null); //change from null to google auth status
-
+    const [user, setUser] = useState(auth.currentUser); //change from null to google auth status
+    console.log("Initial state is " + user);
 
     function handleAuth(event) {
         event.preventDefault();
@@ -31,7 +31,7 @@ function Login() {
 
     if (user) {
         //return <Admin user={user}/>
-        return <div><Admin user={user}/></div>
+        return <div><Admin/></div>
     } else {
         return (
             <div className='login_container'>

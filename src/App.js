@@ -4,6 +4,7 @@ import Body from './Body.js'
 import Project from './Project.js'
 import Footer from './Footer.js'
 import Login from './Login.js'
+import Admin from './Admin.js'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
@@ -15,7 +16,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Body/>}/>
           <Route exact path="/projects/:place/:id" element={<Project/>}/>
-          <Route exact path="/admin" element={<Login/>}/>
+          <Route exact path="/admin" element={<Admin/>}/>
         </Routes>
         <Footer/>
       </Router>

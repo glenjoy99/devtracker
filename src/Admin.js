@@ -1,13 +1,16 @@
 import React, {useRef, useState} from 'react';
-import firebase from './firebase';
+import { collection, addDoc } from "firebase/firestore"; 
+import firebase from './firebase'
 import Login from './Login.js'
+import './Admin.css'
 import { getAuth, signOut } from "firebase/auth";
 
 function Admin(props) {
 
     const auth = getAuth();
 
-    const [user, setUser] = useState(props.user);
+    const [user, setUser] = useState(auth.currentUser);
+    console.log("Initial state admin is" + user);
        
     const projectName = useRef(null);
     const projectSmallDesc = useRef(null);
@@ -16,8 +19,27 @@ function Admin(props) {
     const projectLocation = useRef(null);
 
 
-    function handleAddProject(event) {
+    const handleAddProject = async(event) => {
         event.preventDefault();
+        if (projectName != null && projectSmallDesc != null && projectLongDesc != null
+            && projectImg != null && projectLocation != null) {
+                try {
+                    console.log(projectLocation);
+                    const docRef = await addDoc(collection(firebase.firestore(), projectLocation.current.value), {
+                      name: projectName.current.value,
+                      desc: projectSmallDesc.current.value,
+                      longdesc: projectLongDesc.current.value,
+                      img: projectImg.current.value
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                    alert("Project sucessfully added");
+                  } catch (e) {
+                    console.error("Error adding document: ", e);
+                  }
+            } else {
+                alert("One or more fields is empty");
+            }
+        
     }
 
     function handleSignOut (event) {
@@ -30,6 +52,7 @@ function Admin(props) {
     }
 
 
+
     if (user == null) {
         return <div><Login/></div>
     } else {
@@ -38,7 +61,7 @@ function Admin(props) {
                 <div className='add_area'>
                     <h2>Add Projects</h2>
                     <div className='add_form'>
-                        <form>
+                        <form onSubmit={handleAddProject}> 
                             <label for="projname">Project Name:</label><br/>
                             <input ref={projectName} type="text" id="projname" name="projname"/><br/>
                             <label for="smalldesc">Short Description:</label><br/>
