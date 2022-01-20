@@ -1,37 +1,56 @@
-import React from 'react'
+import React, {useState, useRef} from 'react'
 import './Login.css'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Admin from './Admin.js'
 
 function Login() {
 
     const auth = getAuth();
-    // signInWithEmailAndPassword(auth, email, password)
-    // .then((userCredential) => {
-    //     // Signed in 
-    //     const user = userCredential.user;
-    //     // ...
-    // })
-    // .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    // });
+    const emailRef = useRef(null);
+    const passRef = useRef(null);
+
+    const [user, setUser] = useState(null); //change from null to google auth status
 
 
-    return (
-        
-        <div className='login_container'>
-            <div className='login_header'>
-                <h2>Restricted Area- Admin Login.</h2>
+    function handleAuth(event) {
+        event.preventDefault();
+        signInWithEmailAndPassword(auth, emailRef.current.value, passRef.current.value)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            setUser(user);
+            console.log("User logged in.");
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
+    }
+
+
+    if (user) {
+        //return <Admin user={user}/>
+        return <div><Admin user={user}/></div>
+    } else {
+        return (
+            <div className='login_container'>
+                <div className='login_header'>
+                    <h2>Restricted Area- Admin Login.</h2>
+                </div>
+                <form onSubmit={handleAuth}>
+                    <label for="email">Email:</label><br/>
+                    <input ref={emailRef} type="email" id="email" name="email"/><br/>
+                    <label for="pass">Password:</label><br/>
+                    <input ref={passRef} type="password" id="pass" name="pass"/><br/>
+                    <input type="submit" value="Submit"></input>
+                </form>
             </div>
-            <form>
-                <label for="email">Email:</label><br/>
-                <input type="text" id="email" name="email"/><br/>
-                <label for="pass">Password:</label><br/>
-                <input type="text" id="pass" name="pass"/><br/>
-                <input type="submit" value="Submit"></input>
-            </form>
-        </div>
-    )
+        )
+    }
+
+
+    
 }
 
 export default Login
