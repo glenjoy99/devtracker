@@ -10,7 +10,6 @@ function Admin(props) {
     const auth = getAuth();
 
     const [user, setUser] = useState(auth.currentUser);
-    console.log("Initial state admin is" + user);
        
     const projectName = useRef(null);
     const projectSmallDesc = useRef(null);
@@ -18,11 +17,19 @@ function Admin(props) {
     const projectImg = useRef(null);
     const projectLocation = useRef(null);
 
+    function clearFields() {
+        projectName.current.value = '';
+        projectSmallDesc.current.value = '';
+        projectLongDesc.current.value = '';
+        projectImg.current.value = '';
+        projectLocation.current.value = '';
+    }
+
 
     const handleAddProject = async(event) => {
         event.preventDefault();
-        if (projectName != null && projectSmallDesc != null && projectLongDesc != null
-            && projectImg != null && projectLocation != null) {
+        if (projectName.current.value != '' && projectSmallDesc.current.value  != '' && projectLongDesc.current.value  != ''
+            && projectImg.current.value  != '' && projectLocation.current.value  != '') { //add .current.value to all 
                 try {
                     console.log(projectLocation);
                     const docRef = await addDoc(collection(firebase.firestore(), projectLocation.current.value), {
@@ -33,6 +40,7 @@ function Admin(props) {
                     });
                     console.log("Document written with ID: ", docRef.id);
                     alert("Project sucessfully added");
+                    clearFields();
                   } catch (e) {
                     console.error("Error adding document: ", e);
                   }

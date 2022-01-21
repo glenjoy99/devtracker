@@ -23,6 +23,7 @@ function Login() {
             // ...
         })
         .catch((error) => {
+            alert("Incorrect credentials");
             const errorCode = error.code;
             const errorMessage = error.message;
         });
