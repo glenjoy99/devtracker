@@ -71,15 +71,15 @@ function Admin(props) {
                     <div className='add_form'>
                         <form onSubmit={handleAddProject}> 
                             <label for="projname">Project Name:</label><br/>
-                            <input ref={projectName} type="text" id="projname" name="projname"/><br/>
+                            <input ref={projectName} type="text" autocomplete="off" id="projname" name="projname"/><br/>
                             <label for="smalldesc">Short Description:</label><br/>
-                            <input ref={projectSmallDesc} type="text" id="smalldesc" name="smalldesc"/><br/>
+                            <input ref={projectSmallDesc} type="text" autocomplete="off" id="smalldesc" name="smalldesc"/><br/>
                             <label for="longdesc">Long Description:</label><br/>
-                            <input ref={projectLongDesc} type="text" id="longdesc" name="longdesc"/><br/>
+                            <input ref={projectLongDesc} type="text" autocomplete="off" id="longdesc" name="longdesc"/><br/>
                             <label for="imgurl">Image URL:</label><br/>
-                            <input ref={projectImg} type="text" id="imgurl" name="imgurl"/><br/>
+                            <input ref={projectImg} type="text" autocomplete="off" id="imgurl" name="imgurl"/><br/>
                             <label for="location">Project Location:</label><br/>
-                            <input ref={projectLocation} type="text" id="location" name="location"/><br/>
+                            <input ref={projectLocation} type="text" autocomplete="off" id="location" name="location"/><br/>
                             <input type="submit" value="Submit"></input>
                         </form>
                     </div>

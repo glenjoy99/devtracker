@@ -10,6 +10,14 @@ function Header() {
         navigate('/');
     }
 
+    function handleAboutClick() {
+        navigate('/about');
+    }
+
+    function handleMapClick() {
+        navigate('/map');
+    }
+
 
     return (
         <div className='Header'>
@@ -24,9 +32,8 @@ function Header() {
             </div>
             
             <div className='links'>
-                <div className='link'><h2>Map</h2></div> 
-                <div className='link'><h2>About</h2></div> 
-                <div className='link'><h2>Contact</h2></div> 
+                <div className='link' onClick={handleMapClick}><h2>Map</h2></div> 
+                <div id='about' className='link' onClick={handleAboutClick}><h2>About</h2></div> 
             </div>
         </div>
     )
